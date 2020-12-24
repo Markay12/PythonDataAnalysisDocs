@@ -152,7 +152,28 @@ This will give us the output of 10.0 which is the first input for our *study_hou
 }
 ```
 
+## Exploring Tabular Data with Pandas
 
+Pandas? Why do we need to worry about these fuzzy animals?  
+Pandas is a reference to another import package just like NumPy and gives us more accessibility to our data  
+
+This will all function and run around the **DataFrame**
+
+```Python
+{
+
+    import pandas as pd
+
+    df_students = pd.DataFrame({'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic',    'Jimmie', 'Rhonda', 'Giovanni', 'Francesca', 'Rajab',  'Naiyana', 'Kian', 'Jenny','Jakeem','Helena','Ismat', 'Anila','Skye','Daniel','Aisha'],
+    'StudyHours':student_data[0],
+    'Grade':student_data[1]})
+
+    df_students 
+
+}
+```
+
+In addition to what we have defined being the columns of students, hours spent studying and grade. Each will be given their own row number which you can specify. Since we did not this will begin at 0 and increment +1
 
 
 
