@@ -176,6 +176,51 @@ This will all function and run around the **DataFrame**
 In addition to what we have defined being the columns of students, hours spent studying and grade. Each will be given their own row number which you can specify. Since we did not this will begin at 0 and increment +1
 
 
+Let's find information for the fifth student within our data set and output everything that we know about them  
+
+`df_students.loc[5]`  
+- As shown here the data is found and given an output with the use of data.loc[element]
+
+```
+{
+
+    OUTPUT
+    Name    Vicky
+    StudyHours  1
+    Grade       3
+    Name: 5, dtype: object
+
+}
+```
+
+We can also get a range, say the first name up until Vicky our fifth name
+
+```Python
+{
+
+    df_students.loc[0:5]
+
+}
+```
+
+To find information regardless of the ordinal position within the data frame we use something called iloc  
+
+```Python
+{
+
+    df_students.iloc[0:5]
+
+}
+```
+
+There is one major difference between these two. The first `loc` returns 6 rows while `iloc` will return only five since integer ranges don't include upper bound values within iloc.  
+
+iloc identifies data values in our DataFrame by position, which would go past rows and columns
+
+So, how does loc work with coumns? **loc** is used to located data items vased on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
+
+
+
 
 
 
