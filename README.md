@@ -93,6 +93,67 @@ We can also use some of NumPy's awesome integrated features and find the average
 
 ## Second Data Set
 
+Here we will add study hours for the students in our class to compare with their grades  
+
+```Python
+{
+
+    # Define an array of study hours
+    study_hours = [10.0,11.5,9.0,16.0,9.25,1.0,11.5,9.0,8.5, 14.5,15.5, 13.75,9.0,8.0,15.5,8.0,9.0,6.0,10.0,12.0, 12.5,12.0]
+
+    # Create a 2D array (an array of arrays)
+    student_data = np.array([study_hours, grades])
+
+    # display the array
+    student_data
+
+}
+```
+
+Now we have a two dimensional array which puts these two data sets right next to each other  
+
+Let's take a look at the shape of our data set! 
+
+`student_data.shape`  
+
+Output: (2, 22) 
+
+Now, what do these two numbers mean? The first number 2 represents that the data array contains two elements (study_hours, grades) and the 22 represents both arrays containing 22 elements each  
+
+If you're the inquisitive type, like myself... what happens when there are two arrays that aren't the same size?  
+- The output will just tell you that there are two elements (2,)
+  
+
+So, how do we navigate through this data? Just like when we were navigating the first array, the index begins at 0 and we specify based off how we input the elements initially. `student_data = np.array([study_hours, grades])`
+
+So lets find the first element of the first data set
+
+```Python
+{
+
+    student_data[0][0]
+
+}
+```
+
+This will give us the output of 10.0 which is the first input for our *study_hours* data set. So how does the avereage of the first array compare to the average of the second array?  
+
+```Python
+{
+
+    #get average of the study hours
+    avg_study = student_data[0].mean()
+
+    #get average of the grades
+    avg_grades = student_data[1].mean()
+
+    print('Average study hours: {:.2f}\nAverage grade: {:.2f}'.format(avg_study, avg_grade))
+
+}
+```
+
+
+
 
 
 
