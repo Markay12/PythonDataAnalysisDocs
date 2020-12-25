@@ -219,6 +219,43 @@ iloc identifies data values in our DataFrame by position, which would go past ro
 
 So, how does loc work with columns? **loc** is used to located data items vased on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
 
+Use loc to locate data items based on index values rather than positions. The rows, as specified before are set by integer values beginning at zero. However, our columns were created by using the time spent studying and grade achieved.
+
+`df_students.loc[0, 'Grade']`  
+
+We can also use the **loc** method to find indexed rows based on filtering an expression reference
+
+```Python
+{
+
+    df_students.loc[df_students['Name']=='Aisha']
+
+    # Output
+    # 21 Aisha 12.0 64.0
+
+}
+```
+
+another method to accomplish this same task would be  
+`df_students.query('Name=="Aisha"')`  
+`df_students.query('Name=="Aisha"')`  
+
+
+## Load Data from a file
+
+This is something that is extremely helpful if we have a nice way to collect data but want a way to port this information into our program  
+
+How do we do this?  
+
+```Python
+{
+
+    df_students = pd.read_csv('data/grades.csv',delimiter=',',header='infer')
+    df_students.head()
+
+}
+```
+
 
 
 
