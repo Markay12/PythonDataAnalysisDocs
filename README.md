@@ -324,6 +324,39 @@ What if we just want to know the students that studied for over the average amou
     df_students[df_students.StudyHours > mean_study]
 ```
 
+So, if we want to find the average grade of those who studied over the average amount of time we can append `.Grade.mean()` at the end  
+
+```Python
+    df_students[df_students.StudyHours > mean_study].Grade.mean()
+```
+
+So what if anyone in the class needs a 70 to pass? Well, we can use Panda again to declare whether someone had passed or failed. We can just add this to our list as a new column. 
+
+```Python
+    passed = pd.Series(df_students['Grades'] >= 70)
+    df_students = pd.concat([df_students, passed.rename("Pass")], axis=1)
+    df_students
+```
+
+We can also group all of the students that passed and all of the students that failed together. 
+
+```Python
+
+    #how many students Passed/Failed
+    print(df_students.groupby(df_students.Pass).Name.count())
+
+    #Mean time to pass and mean time to fail
+    print(df_students.groupby(df_students.Pass)['StudyHours', 'Grade'].mean())
+
+    #sort by grades 
+    df_students = df_students.sort_values('Grade', ascending=False)
+
+    # Show the DataFrame
+    df_students
+
+```
+
+
 
 
 
