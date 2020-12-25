@@ -217,7 +217,7 @@ There is one major difference between these two. The first `loc` returns 6 rows 
 
 iloc identifies data values in our DataFrame by position, which would go past rows and columns
 
-So, how does loc work with coumns? **loc** is used to located data items vased on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
+So, how does loc work with columns? **loc** is used to located data items vased on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
 
 
 
