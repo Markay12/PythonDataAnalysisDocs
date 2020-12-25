@@ -256,6 +256,79 @@ How do we do this?
 }
 ```
 
+We use our import .read_csv to load data from our text files. You can also specify delimeters as well as the first row which contains the column names
+
+## Handling Missing Values
+
+Just think... you are at the end of your research, you have most of your data but there are some holes that you are missing which cannot be filled by collected data. What do we do?  
+
+The method to specify these missing values are defined by isnull  
+
+```Python
+{
+
+    df_students.isnull()
+
+    # if we have a larger data set we would 
+    # want to find all of the missing data spots
+
+    df_students.isnull().sum()
+        
+}
+```
+When we use the second `df_students.isnull().sum()` we learn that we are missing 1 StudyHours value and two Grade values
+
+But... what if we want to just see these missing values?  
+
+```Python
+    df_students[df_students.isnull().any(axis=1)]
+```
+
+Here we will just be told where the NULL value is with NaN. How do we fill these values in?...  
+
+We can *impute* these replacement values, and just replace the value with the average amount or the mean of the whole rest of data collected --> `fillna`
+
+```Python
+    df_students.StudyHours = df_students.StudyHours.fillna(df_students.StudyHours.mean())
+    df_students
+```
+
+However, in most cases you don't want to just add data to a set for integrity and accuracy reasons. For this we can just remove that row completely.  
+
+```Python
+    df_students = df_students.dropna(axis=0, how='any')
+    df_students #display the data set
+```
+
+
+# So what does our Data Say?
+
+## Statistical Data
+
+Our data is clean and now we can look at all that we have and derive some values  
+
+```Python
+    # Get the mean study hours using to column name as an index
+    mean_study = df_students['StudyHours'].mean()
+
+    # Get the mean grade using the column name as a property (not because we need to, but just for show)
+    mean_grade = df_students.Grade.mean()
+
+    # Print the mean study hours and mean grade
+    print('Average weekly study hours: {:.2f}\nAverage grade:   {:.2f}'.format(mean_study, mean_grade))
+```
+
+What if we just want to know the students that studied for over the average amount of time?  
+
+```Python
+    df_students[df_students.StudyHours > mean_study]
+```
+
+
+
+
+
+
 
 
 
