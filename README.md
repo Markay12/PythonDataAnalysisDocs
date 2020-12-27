@@ -300,6 +300,7 @@ However, in most cases you don't want to just add data to a set for integrity an
     df_students #display the data set
 ```
 
+---
 
 # So what does our Data Say?
 
@@ -356,6 +357,7 @@ We can also group all of the students that passed and all of the students that f
 
 ```
 
+---
 
 # Data Visualization
 
@@ -409,21 +411,61 @@ So let's customize our chart
 {
 
     # Create a bar plot of name vs grade
-    plt.bar(x=df_students.Name, height=df_students.Grade,   color='orange')
-    
+    plt.bar(x=df_students.Name, height=df_students.Grade, color='orange')
+
     # Customize the chart
     plt.title('Student Grades')
     plt.xlabel('Student')
     plt.ylabel('Grade')
     plt.grid(color='#ffa4b6', linestyle='--', linewidth=2,  axis='y', alpha=0.7)
     plt.xticks(rotation=90)
-    
+
     # Display the plot
     plt.show()
 
 }
+```
+
+We can also specify the size of our plot from the beginning by adding this in our constructor 
+
+`fig = plt.figure(figsize=(8, 3))`
 
 
+In addition to this plot we can also create subplots to visualize what we have done in another manner. In this case we can take both our bar chart as well as a pie chart.  
+
+```Python
+{
+
+    # Create a figure for 2 subplots (1 row, 2 columns)
+    fig, ax = plt.subplots(1, 2, figsize = (10,4))
+
+    # Create a bar plot of name vs grade on the first axis
+    ax[0].bar(x=df_students.Name, height=df_students.Grade, color='orange')
+    ax[0].set_title('Grades')
+    ax[0].set_xticklabels(df_students.Name, rotation=90)
+
+    # Create a pie chart of pass counts on the second axis
+    pass_counts = df_students['Pass'].value_counts()
+    ax[1].pie(pass_counts, labels=pass_counts)
+    ax[1].set_title('Passing Grades')
+    ax[1].legend(pass_counts.keys().tolist())
+
+    # Add a title to the Figure
+    fig.suptitle('Student Data')
+
+    # Show the figure
+    fig.show()
+
+}
+```
+
+Matplotlib is one of the most fundamental libraries that Python offers. Therefore, a lot of other libraries tend to use it within their own methods. Panda is no exception to this and can be used during plotting.
+
+`df_students.plot.bar(x='Name', y-'Students', color='teal', figsize=(6, 4))`
+
+---
+
+# Statistical Analysis
 
 
 
