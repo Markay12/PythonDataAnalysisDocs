@@ -642,6 +642,48 @@ df_sample #display data set
 
 ## Comparing Numerical and Categorical Values
 
+Here we want to compare the amount of time studied to grade, while also knowing the name of the student as well as if whether or not they passed.  
+
+To make this we need to create our first boxplot  
+
+`df_sample.boxplot(column='StudyHours', by='Pass', figsize(8, 5))`
+
+Comparing the data that we find within this graph it shows that the students who studied more tended to do a lot better on their exam (which would confirm most suspicion)
+
+## Compare Numeric Data
+
+Let's compare the grades and StudyHours together to really see how the the students did and learn how much our students should study for our exams to pass.  
+
+```Python
+#create bar plot of name vs grade and study hours
+df_sample.plot(x='Name', y=['Grade','StudyHours'], kind='bar', figsize(8, 5))
+```
+
+The chart shows bars for both grade and study hours for each student; but it's not easy to compare because the values are on different scales. Grades are measured in grade points, and range from 3 to 97; while study time is measured in hours and ranges from 1 to 16.
+
+A common technique when dealing with numeric data in different scales is to *normalize* the data so that the values retain their proportional distribution, but are measured on the same scale. To accomplish this, we'll use a technique called *MinMax* scaling that distributes the values proportionally on a scale of 0 to 1. You could write the code to apply this transformation; but the **Scikit-Learn** library provides a scaler to do it for you.
+
+```Python
+{
+
+    from sklearn.preprocessing import MinMaxScaler
+
+    # Get a scaler object
+    scaler = MinMaxScaler()
+
+    # Create a new dataframe for the scaled values
+    df_normalized = df_sample[['Name', 'Grade', 'StudyHours']].copy()
+
+    # Normalize the numeric columns
+    df_normalized[['Grade','StudyHours']] = scaler.fit_transform(df_normalized[['Grade','StudyHours']])
+
+    # Plot the normalized values
+    df_normalized.plot(x='Name', y=['Grade','StudyHours'], kind='bar', figsize=(8,5))
+
+}
+```
+
+
 
 
 
