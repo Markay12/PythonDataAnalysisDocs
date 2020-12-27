@@ -405,6 +405,23 @@ So let's customize our chart
 }
 ```
 
+```Python
+{
+
+    # Create a bar plot of name vs grade
+    plt.bar(x=df_students.Name, height=df_students.Grade,   color='orange')
+    
+    # Customize the chart
+    plt.title('Student Grades')
+    plt.xlabel('Student')
+    plt.ylabel('Grade')
+    plt.grid(color='#ffa4b6', linestyle='--', linewidth=2,  axis='y', alpha=0.7)
+    plt.xticks(rotation=90)
+    
+    # Display the plot
+    plt.show()
+
+}
 
 
 
