@@ -467,9 +467,164 @@ Matplotlib is one of the most fundamental libraries that Python offers. Therefor
 
 # Statistical Analysis
 
+So, now that we see our data visually we can begin to understand it. This comes down to some basic statistical analysis skills. 
+
+How can we use our basic visual understanding here?  
+
+## Data Distribution
+
+One main thing to look at when representing your data is the *distribution* of data. The best place to start would be to see a histogram which allows us to easily visualize the **mode** of our data.
+
+```Python
+{
+
+    #variable to examine
+    var_data = df_students['Grade']
+
+    #create the figure
+    fig = plt.figure(figsize=(10, 4))
+
+    #plot a histogram
+    plt.hist(var_data)
+
+    #add titles and labels
+    plt.title('Data Dist')
+    plt.xlabel('Val')
+    plt.ylabel('Freq')
+
+    #plot the figure
+    fig.show()
+
+}
+```
 
 
+This will now show the end user a histogram with the most frequent grade being the highest pillar. This is why we chose a histogram (for its simplicity).
 
+It may have been a while since you took a basic class on statistics, or you may be a master of it but we will go over some simple things to refresh.  
+
+* **Mean**: Average of data, the total amount of data divided by how many items that were involved
+* **Median**: The middle value within your data when placed in order (least to greatest or greatest to least)
+* **Mode**: The most common data point within your set  
+
+
+```Python
+{
+
+    # Get the variable to examine
+    var = df_students['Grade']
+
+    # Get statistics
+    min_val = var.min()
+    max_val = var.max()
+    mean_val = var.mean()
+    med_val = var.median()
+    mod_val = var.mode()[0]
+
+    print('Minimum:{:.2f}\nMean:{:.2f}\nMedian:{:.2f}\nMode:{:.2f}\nMaximum:{:.2f}\n'.format(min_val, mean_val, med_val, mod_val, max_val))
+
+    # Create a Figure
+    fig = plt.figure(figsize=(10,4))
+
+    # Plot a histogram
+    plt.hist(var)
+
+    # Add lines for the statistics
+    plt.axvline(x=min_val, color = 'gray',  linestyle='dashed', linewidth = 2)
+    plt.axvline(x=mean_val, color = 'cyan',     linestyle='dashed', linewidth = 2)
+    plt.axvline(x=med_val, color = 'red', linestyle='dashed',   linewidth = 2)
+    plt.axvline(x=mod_val, color = 'yellow',    linestyle='dashed', linewidth = 2)
+    plt.axvline(x=max_val, color = 'gray',  linestyle='dashed', linewidth = 2)
+
+    # Add titles and labels
+    plt.title('Data Distribution')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
+
+    # Show the figure
+    fig.show()
+
+}
+```
+
+We can also visualize our data through what is usually referenced as a *box and whiskers plot* and can show us our outliers as well as better distribution of our variables
+
+```Python
+{
+
+    #gather vars to examine
+    var = df_students['Grade']
+
+    #create the figure
+    fig = plt.figure(figsize=(10, 4))
+
+    #plot histogram
+    plt.boxplot(var)
+
+    #add title
+    plt.title('Data Dist')
+
+    #show the figure
+    fig.show()
+
+}
+```
+
+It's often useful to combine histograms and box plots, with the box plot's orientation changed to align it with the histogram (in some ways, it can be helpful to think of the histogram as a "front elevation" view of the distribution, and the box plot as a "plan" view of the distribution from above.)
+
+
+```Python
+{
+
+    # Create a function that we can re-use
+    def show_distribution(var_data):
+        from matplotlib import pyplot as plt
+
+        # Get statistics
+        min_val = var_data.min()
+        max_val = var_data.max()
+        mean_val = var_data.mean()
+        med_val = var_data.median()
+        mod_val = var_data.mode()[0]
+
+        print('Minimum:{:.2f}\nMean:{:.2f}\nMedian:{:.2f} \nMode:{:.2f}\nMaximum:{:.2f}\n'.format(min_val, mean_val, med_val, mod_val, max_val))
+
+
+        # Create a figure for 2 subplots (2 rows, 1 column)
+        fig, ax = plt.subplots(2, 1, figsize = (10,4))
+
+        # Plot the histogram   
+        ax[0].hist(var_data)
+        ax[0].set_ylabel('Frequency')
+
+        # Add lines for the mean, median, and mode
+        ax[0].axvline(x=min_val, color = 'gray',    linestyle='dashed', linewidth = 2)
+        ax[0].axvline(x=mean_val, color = 'cyan',   linestyle='dashed', linewidth = 2)
+        ax[0].axvline(x=med_val, color = 'red',     linestyle='dashed', linewidth = 2)
+        ax[0].axvline(x=mod_val, color = 'yellow',  linestyle='dashed', linewidth = 2)
+        ax[0].axvline(x=max_val, color = 'gray',    linestyle='dashed', linewidth = 2)
+
+        # Plot the boxplot   
+        ax[1].boxplot(var_data, vert=False)
+        ax[1].set_xlabel('Value')
+
+        # Add a title to the Figure
+        fig.suptitle('Data Distribution')
+
+        # Show the figure
+        fig.show()
+
+    # Get the variable to examine
+    col = df_students['Grade']
+    # Call the function
+    show_distribution(col)
+
+}
+```
+
+The descriptive statistics we've used to understand the distribution of the student data variables are the basis of statistical analysis; and because they're such an important part of exploring your data, there's a built-in **Describe** method of the DataFrame object that returns the main descriptive statistics for all numeric columns.
+
+`df_students.describe()`
 
 
 
