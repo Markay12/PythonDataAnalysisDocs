@@ -357,6 +357,55 @@ We can also group all of the students that passed and all of the students that f
 ```
 
 
+# Data Visualization
+
+So, just like NumPy and Panda we are going to have to visualize our data using some predefined library  
+The one that we are going to use here is Matplotlib  
+
+```Python
+
+    #display the plot within the notebook
+    %matplotlib inline
+
+    #import matplotlib
+    from matplotlib import pyplot as plt
+
+    #create a bar plot of names vs their corresponding grade
+    plt.bar(x=df_students.Name, height=df_students.Grade)
+
+    #display the plot
+    plt.show()
+
+}
+```
+
+The pyplot class was used here to plot our chart, but there are still some issues that are to be noted. We can now change  
+
+* Color
+* Title
+* X and Y Axis labels
+* Grid
+* Rotate Axis
+
+So let's customize our chart  
+
+```Python
+{
+
+    plt.title('Student Grades')
+    plt.xlabel('Student')
+    plt.ylabel('Grade')
+    plt.grid(color='ffa4b6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+    plt.xticks(rotation=90)
+
+    #display our plot
+    plt.show()
+
+
+}
+```
+
+
 
 
 
