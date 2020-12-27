@@ -3,7 +3,7 @@
 ## Introduction
 
 What is data analysis?  
-- Data analysis involves exploring, representing and understanding data. Whether this is large amounts of data (big data) or small amounts such as a local project, data anaylsis can be conducted in many forms.
+- Data analysis involves exploring, representing and understanding data. Whether this is large amounts of data (big data) or small amounts such as a local project, data analysis can be conducted in many forms.
 
 One major use of data analysis comes with *machine learning* which is a 
 
@@ -12,7 +12,7 @@ One major use of data analysis comes with *machine learning* which is a
 
 This uses data we have found to create models that can predict values or future outcomes
 
-Data that is collected from this analysis can be used in many situations that benefit the greater public by finding the best ways to teach and accomodate to others. By learning the best methods of everyday tasks we can better optimize our lives.
+Data that is collected from this analysis can be used in many situations that benefit the greater public by finding the best ways to teach and accommodate to others. By learning the best methods of everyday tasks, we can better optimize our lives.
 
 
 ## Data Analysis - First Dive
@@ -21,7 +21,7 @@ Analysis of data is usually done in what is called an *iterative* process which 
 
 Their main concern is with finding ways to explore, visualize and manipulate the data they are given. Finding the best way to represent this data can lead to better results and a stronger understanding
 
-First we must begin with where to start with understanding the data that we are collecting and where to place it as we are collecting it.  
+First, we must begin with where to start with understanding the data that we are collecting and where to place it as we are collecting it.  
 One of the best tools to use here is **Jupyter Notebooks** and **Python**  
 
 Python is handy due to its flexibility in multiple situations. This is one of the main reasons for its heavy use in any industry, especially data science. 
@@ -38,7 +38,7 @@ Here we begin with our first representation in Python:
     print(data) 
 }
 ```
-What we have done here is taken our data and placed it into a basic array. While this is greate for manipulation of the data, there are better ways to do this with NumPy.  
+What we have done here is taken our data and placed it into a basic array. While this is great for manipulation of the data, there are better ways to do this with NumPy.  
 
 ```Python
 {
@@ -63,7 +63,7 @@ To see their differences try
 }
 ```
 
-The first one in this instance multiplies the length of the array by two creating a new list that is twice the length of the original. Where as the second multiplication goes through the list just as a vector and results in the same length array with each element being multiplied by two.  
+The first one in this instance multiplies the length of the array by two creating a new list that is twice the length of the original. Whereas the second multiplication goes through the list just as a vector and results in the same length array with each element being multiplied by two.  
 
 ### Multiple Dimension Arrays
 ```Python
@@ -77,7 +77,7 @@ The first one in this instance multiplies the length of the array by two creatin
 }
 ```
 
-To access the first element we would do this in the same way as many other programming languages with the first element beginning at index 0.   
+To access the first element, we would do this in the same way as many other programming languages with the first element beginning at index 0.   
 
 To access use `grades[0]`  
 
@@ -110,9 +110,9 @@ Here we will add study hours for the students in our class to compare with their
 }
 ```
 
-Now we have a two dimensional array which puts these two data sets right next to each other  
+Now we have a two-dimensional array which puts these two data sets right next to each other  
 
-Let's take a look at the shape of our data set! 
+Let's look at the shape of our data set! 
 
 `student_data.shape`  
 
@@ -126,7 +126,7 @@ If you're the inquisitive type, like myself... what happens when there are two a
 
 So, how do we navigate through this data? Just like when we were navigating the first array, the index begins at 0 and we specify based off how we input the elements initially. `student_data = np.array([study_hours, grades])`
 
-So lets find the first element of the first data set
+So, let's find the first element of the first data set
 
 ```Python
 {
@@ -136,7 +136,7 @@ So lets find the first element of the first data set
 }
 ```
 
-This will give us the output of 10.0 which is the first input for our *study_hours* data set. So how does the avereage of the first array compare to the average of the second array?  
+This will give us the output of 10.0 which is the first input for our *study_hours* data set. So how does the average of the first array compare to the average of the second array?  
 
 ```Python
 {
@@ -217,7 +217,7 @@ There is one major difference between these two. The first `loc` returns 6 rows 
 
 iloc identifies data values in our DataFrame by position, which would go past rows and columns
 
-So, how does loc work with columns? **loc** is used to located data items vased on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
+So, how does loc work with columns? **loc** is used to located data items based on index rather than positions. In absence of index the rows in the DataFrame are indexed as integer values
 
 Use loc to locate data items based on index values rather than positions. The rows, as specified before are set by integer values beginning at zero. However, our columns were created by using the time spent studying and grade achieved.
 
@@ -260,7 +260,7 @@ We use our import .read_csv to load data from our text files. You can also speci
 
 ## Handling Missing Values
 
-Just think... you are at the end of your research, you have most of your data but there are some holes that you are missing which cannot be filled by collected data. What do we do?  
+Just think... you are at the end of your research; you have most of your data but there are some holes that you are missing which cannot be filled by collected data. What do we do?  
 
 The method to specify these missing values are defined by isnull  
 
@@ -302,7 +302,7 @@ However, in most cases you don't want to just add data to a set for integrity an
 
 ---
 
-# So what does our Data Say?
+# What does our Data Say?
 
 ## Statistical Data
 
@@ -331,7 +331,7 @@ So, if we want to find the average grade of those who studied over the average a
     df_students[df_students.StudyHours > mean_study].Grade.mean()
 ```
 
-So what if anyone in the class needs a 70 to pass? Well, we can use Panda again to declare whether someone had passed or failed. We can just add this to our list as a new column. 
+So, what if anyone in the class needs a 70 to pass? Well, we can use Panda again to declare whether someone had passed or failed. We can just add this to our list as a new column. 
 
 ```Python
     passed = pd.Series(df_students['Grades'] >= 70)
@@ -633,7 +633,7 @@ The descriptive statistics we've used to understand the distribution of the stud
 
 Now that we can see our data, we need to know how to find relationships between different data points within our analysis. 
 
-We want to remove outliers within our data points and from beginnning analysis we already know where they are. So, we can go back to what we know from **Panda** and remove them  
+We want to remove outliers within our data points and from beginning analysis we already know where they are. So, we can go back to what we know from **Panda** and remove them  
 
 ```Python
 df_sample = df_students[df_students['StudyHours']>1]
@@ -685,7 +685,7 @@ A common technique when dealing with numeric data in different scales is to *nor
 
 Though it is not totally clear and representative of grade being 100% controlled by the amount of time spent studying. Their relationship is clearly apparent.  
 
-We can use another method to quanitfy this relationship between the two  
+We can use another method to quantify this relationship between the two  
 
 `df_normalize.Grade.corr(df_normalized.StudyHours)`
 
@@ -736,7 +736,7 @@ plt.show()
 
 ## Predictions
 
-Now that regression coeffecients have been established, we can take time to understand them and place them within a function for given amount of study time.
+Now that regression co-effecients have been established, we can take time to understand them and place them within a function for given amount of study time.
 
 ```Python
 # Define a function based on our regression coefficients
