@@ -683,8 +683,55 @@ A common technique when dealing with numeric data in different scales is to *nor
 }
 ```
 
+Though it is not totally clear and representative of grade being 100% controlled by the amount of time spent studying. Their relationship is clearly apparent.  
+
+We can use another method to quanitfy this relationship between the two  
+
+`df_normalize.Grade.corr(df_normalized.StudyHours)`
+
+The value that we get here will show a correlation that is between the values of -1 and 1. A value just above zero or at zero would show a small positive correlation. here we achieve a correlation of 0.9117 which is a strong correlation between the two data points.  
+
+Remember the difference between correlation and causation. Just because these two are similar and very much correlated does not mean that studying more will increase a students score (in this case it does).
 
 
+## Scatter Plot
 
+`df_sample.plot.scatter(title='Study Time vs Grade', x='StudyHours', y='Grades')`
+
+Here we will also see this positive correlation as we reach the greater amount of time spent studying increased the overall achieved score of the students.
+
+By finding the line of best fit from this data and regression analysis we can locate which function correlated with the grades. From this we can determine what your average score would be from any time spent studying.  
+
+
+Fortunately, you don't need to code the regression calculation yourself - the **SciPy** package includes a **stats** class that provides a **linregress** method to do the hard work for you. This returns (among other things) the coefficients you need for the slope equation - slope (*m*) and intercept (*b*) based on a given pair of variable samples you want to compare.
+
+```Python
+
+from scipy import stats
+
+#
+df_regression = df_sample[['Grade', 'StudyHours']].copy()
+
+# Get the regression slope and intercept
+m, b, r, p, se = stats.linregress(df_regression['StudyHours'], df_regression['Grade'])
+print('slope: {:.4f}\ny-intercept: {:.4f}'.format(m,b))
+print('so...\n f(x) = {:.4f}x + {:.4f}'.format(m,b))
+
+# Use the function (mx + b) to calculate f(x) for each x (StudyHours) value
+df_regression['fx'] = (m * df_regression['StudyHours']) + b
+
+# Calculate the error between f(x) and the actual y (Grade) value
+df_regression['error'] = df_regression['fx'] - df_regression['Grade']
+
+# Create a scatter plot of Grade vs Salary
+df_regression.plot.scatter(x='StudyHours', y='Grade')
+
+# Plot the regression line
+plt.plot(df_regression['StudyHours'],df_regression['fx'], color='cyan')
+
+# Display the plot
+plt.show()
+    
+```
 
 
