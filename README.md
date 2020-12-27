@@ -631,7 +631,16 @@ The descriptive statistics we've used to understand the distribution of the stud
 
 # Comparing Data
 
+Now that we can see our data, we need to know how to find relationships between different data points within our analysis. 
 
+We want to remove outliers within our data points and from beginnning analysis we already know where they are. So, we can go back to what we know from **Panda** and remove them  
+
+```Python
+df_sample = df_students[df_students['StudyHours']>1]
+df_sample #display data set
+```
+
+## Comparing Numerical and Categorical Values
 
 
 
