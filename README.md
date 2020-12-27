@@ -734,4 +734,30 @@ plt.show()
     
 ```
 
+## Predictions
+
+Now that regression coeffecients have been established, we can take time to understand them and place them within a function for given amount of study time.
+
+```Python
+# Define a function based on our regression coefficients
+def f(x):
+    m = 6.3134
+    b = -17.9164
+    return m*x + b
+
+study_time = 14
+
+# Get f(x) for study time
+prediction = f(study_time)
+
+# Grade can't be less than 0 or more than 100
+expected_grade = max(0,min(100,prediction))
+
+#Print the estimated grade
+print ('Studying for {} hours per week may result in a grade of {:.0f}'.format(study_time, expected_grade))
+
+```
+
+This is a basic example of machine learning where we can take this sample set of data and learn how to use it and analyze it within our whole function giving the end user plenty of features to work with and understand.
+
 
